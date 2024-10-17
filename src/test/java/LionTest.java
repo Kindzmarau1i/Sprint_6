@@ -3,7 +3,6 @@ import com.example.Lion;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -13,22 +12,19 @@ import java.util.List;
 public class LionTest {
 
     @Spy
-    Lion lion = new Lion("Самец", new Feline());
+    private Feline feline = new Feline();
+    private Lion lion = new Lion("Самец", feline);
 
-    public LionTest() throws Exception {
-    }
+    public LionTest() throws Exception {}
 
     @Test
     public void getKittensTest() {
-        int kittens = lion.getKittens();
-        Assert.assertEquals(kittens, 1);
-        Mockito.verify(lion, Mockito.times(1)).getKittens();
+        Assert.assertEquals(1, lion.getKittens());
     }
 
     @Test
     public void getFoodTest() throws Exception {
         List<String> food = lion.getFood();
-        Assert.assertFalse(food.isEmpty());
-        Mockito.verify(lion, Mockito.times(1)).getFood();
+        Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"), food);
     }
 }
