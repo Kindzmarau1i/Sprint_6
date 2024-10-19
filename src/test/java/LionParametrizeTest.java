@@ -1,18 +1,15 @@
 import com.example.Feline;
 import com.example.Lion;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
+import org.mockito.Mock;
 
 @RunWith(Parameterized.class)
 public class LionParametrizeTest {
 
-    @Spy
+    @Mock
     private Feline feline;
     private final String sex;
     private final Boolean isMane;
@@ -27,7 +24,7 @@ public class LionParametrizeTest {
         return new Object[][]{
                 {"Самец", true},
                 {"Самка", false},
-//                {"Чупа", false}
+                {"Чупа", false}
         };
     }
 
